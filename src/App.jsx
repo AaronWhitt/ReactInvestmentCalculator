@@ -1,12 +1,12 @@
 import UserInput from "./components/UserInput";
 import Header from "./components/Header";
-import { calculateInvestmentResults } from "./util/investment";
+import Result from "./components/Result";
 import { useState } from "react";
 const VARIABLES = {
-  initalInvestment: 0,
-  annualInvestment: 0,
-  expectedReturn: 0,
-  duration: 1,
+  initialInvestment: null,
+  annualInvestment: null,
+  expectedReturn: null,
+  duration: null,
 };
 function App() {
   const [variables, setVariables] = useState(VARIABLES);
@@ -14,14 +14,16 @@ function App() {
     setVariables((prevVariables) => {
       return {
         ...prevVariables,
-        [variable]: newVariable,
+        [variable]: parseFloat(newVariable),
       };
     });
   }
+
   return (
     <main>
       <Header />
-      <UserInput initalVariables={variables} handleChange={handleChange} />;
+      <UserInput initialVariables={variables} handleChange={handleChange} />
+      <Result inputVariables={variables} />
     </main>
   );
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
-export default function UserInput({ initalVariables, handleChange }) {
-  const { initalInvestment, annualInvestment, expectedReturn, duration } =
-    initalVariables;
+export default function UserInput({ initialVariables, handleChange }) {
+  const { initialInvestment, annualInvestment, expectedReturn, duration } =
+    initialVariables;
 
   function handleInputChange(event) {
     handleChange(event.target.id, event.target.value);
@@ -13,10 +13,10 @@ export default function UserInput({ initalVariables, handleChange }) {
           <label>Initial Investment</label>
           <input
             type="number"
-            id="initalInvestment"
+            id="initialInvestment"
             onChange={handleInputChange}
             required
-            value={initalInvestment}
+            // value={initialInvestment}
           />
         </p>
         <p>
@@ -26,7 +26,7 @@ export default function UserInput({ initalVariables, handleChange }) {
             id="annualInvestment"
             onChange={handleInputChange}
             required
-            value={annualInvestment}
+            //value={annualInvestment}
           />
         </p>
         <p>
@@ -36,7 +36,7 @@ export default function UserInput({ initalVariables, handleChange }) {
             id="expectedReturn"
             onChange={handleInputChange}
             required
-            value={expectedReturn}
+            //value={expectedReturn}
           />
         </p>
         <p>
@@ -46,7 +46,7 @@ export default function UserInput({ initalVariables, handleChange }) {
             id="duration"
             onChange={handleInputChange}
             required
-            value={duration}
+            //value={duration}
           />
         </p>
       </div>
