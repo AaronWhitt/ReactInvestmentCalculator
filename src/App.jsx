@@ -3,28 +3,32 @@ import Header from "./components/Header";
 import Result from "./components/Result";
 import { useState } from "react";
 const VARIABLES = {
-  initialInvestment: null,
-  annualInvestment: null,
-  expectedReturn: null,
-  duration: null,
+  initialInvestment: 10000,
+  annualInvestment: 900,
+  expectedReturn: 5.5,
+  duration: 12,
 };
 function App() {
   const [variables, setVariables] = useState(VARIABLES);
-  function handleChange(variable, newVariable) {
+
+  const validInput = variables.duration >= 1;
+  function handleChange(inputVariable, newValue) {
     setVariables((prevVariables) => {
       return {
         ...prevVariables,
-        [variable]: parseFloat(newVariable),
+        //[inputVariable]: parseFloat(newValue),
+        [inputVariable]: +newValue, //Adding plus infront of newValue converts like parseFloat would.
       };
     });
   }
 
   return (
-    <main>
+    <>
       <Header />
       <UserInput initialVariables={variables} handleChange={handleChange} />
-      <Result inputVariables={variables} />
-    </main>
+      {!validInput && <p className="center">Duration must be greater than 0</p>}
+      {validInput && <Result inputVariables={variables} />}
+    </>
   );
 }
 

@@ -3,8 +3,8 @@ export default function UserInput({ initialVariables, handleChange }) {
   const { initialInvestment, annualInvestment, expectedReturn, duration } =
     initialVariables;
 
-  function handleInputChange(event) {
-    handleChange(event.target.id, event.target.value);
+  function handleInputChange(inputVariable, newValue) {
+    handleChange(inputVariable, newValue);
   }
   return (
     <section id="user-input">
@@ -13,40 +13,40 @@ export default function UserInput({ initialVariables, handleChange }) {
           <label>Initial Investment</label>
           <input
             type="number"
-            id="initialInvestment"
-            onChange={handleInputChange}
+            onChange={(event) =>
+              handleInputChange("initialInvestment", event.target.value)
+            }
             required
-            // value={initialInvestment}
           />
         </p>
         <p>
           <label>Annual Investment</label>
           <input
             type="number"
-            id="annualInvestment"
-            onChange={handleInputChange}
+            onChange={(event) =>
+              handleInputChange("annualInvestment", event.target.value)
+            }
             required
-            //value={annualInvestment}
           />
         </p>
         <p>
           <label>Expected Return</label>
           <input
             type="number"
-            id="expectedReturn"
-            onChange={handleInputChange}
+            onChange={(event) =>
+              handleInputChange("expectedReturn", event.target.value)
+            }
             required
-            //value={expectedReturn}
           />
         </p>
         <p>
           <label>Duration</label>
           <input
             type="number"
-            id="duration"
-            onChange={handleInputChange}
+            onChange={(event) =>
+              handleInputChange("duration", event.target.value)
+            }
             required
-            //value={duration}
           />
         </p>
       </div>
